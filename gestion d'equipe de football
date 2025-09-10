@@ -1,0 +1,180 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    int id ;
+    char nom[20] ;
+    char prenom[20] ;
+    int numero_joueur;
+    char poste[10];
+    int age;
+    int buts;
+} joueur;
+
+int main() {
+
+    int  id_joueur = 110;
+    int choix_principale ,choix_ajoute ,choix_affiche ,choix_modification ,choix_statistiques;
+    
+    joueur j[50];
+    
+    j[0] = {100,"lionel","messi",10,"attaquant",38,91};
+    j[1] = {101,"zakaria","hedraf",11,"attaquant",40,35};
+    j[2] = {102,"yassine","bono",1,"gardien",28,0};
+    j[3] = {103,"youssef","moti3",1,"gardien",25,0};
+    j[4] = {104,"xavi","simonz",8,"milieu",27,15};
+    j[5] = {105,"toni","kros",6,"milieu",32,9};
+    j[6] = {106,"sergio","ramos",4,"défenseur",35,2};
+    j[7] = {107,"lamine","yamal",19,"attaquant",18,25};
+    j[8] = {108,"luis","diaz",7,"attaquant",23,30};
+    j[9] = {109,"mohamed","salah",12,"attaquant",30,40};
+         
+    
+    menu : {
+    printf("=========menu==========\n");
+    printf("1 => Ajouter un joueur : \n");
+    printf("2 => Afficher la liste de tous les joueurs : \n");
+    printf("3 => Modifier un joueur : \n");
+    printf("4 => Supprimer un joueur : \n");
+    printf("5 => Rechercher un joueur : \n");
+    printf("6 => Statistiques : : \n");
+    }
+      scanf("%d",&choix_principale);
+       
+    switch (choix_principale) {
+        case 1 :
+            
+            menu1 : {
+            printf("1 => ajoute une joueur : \n");
+            printf("2 => ajoute plusieur joueur : \n");
+            printf("3 => reteur au menu principale : \n");
+            }
+              scanf("%d",&choix_ajoute);
+              
+               switch(choix_ajoute){
+                
+                   case 1: ajoute_joueur();
+                        
+                        break;
+                   case 2: ajoute_plusieur_joueur();
+                        break;
+                   case 3: goto menu;  
+                       break;
+                    default: printf("entrer un nombre entre 1 et 3 : ");
+                       goto menu1; 
+                      break;
+            }
+            
+           break;
+        case 2 : 
+            menu2 : {
+                printf("1 => Trier les joueurs par ordre alphabétique (Nom) : \n");
+                printf("2 => Trier les joueurs par âge. : \n");
+                printf("3 => Afficher les joueurs par poste. : \n");
+                printf("4 => reteur au menu principale : \n");
+            }
+            scanf("%d",&choix_affiche);
+            
+            switch(printf(choix_affiche) {
+                case 1 : tri_alphabétique(); 
+                    break;
+                case 2 : tri_âge(); 
+                    break;
+                case 3 : tri_poste();
+                   break;
+                case 4: goto menu; 
+                       break;
+                default: printf("entrer un nombre entre 1 et 4 : ");
+                       goto menu2; 
+                      break;
+            }
+            
+           break;
+        case 3 : 
+             menu3 : {
+                 printf("Modifier le poste d’un joueur : \n");
+                 printf("Modifier l’âge d’un joueur: \n");
+                 printf("Modifier le nombre de buts marqués par un joueur : \n");
+                 printf("4 => reteur au menu principale : \n");
+             }
+             scanf("%d",&choix_modification);
+             
+            switch(choix_modification) {
+                case 1 : 
+                    modification_poste(); 
+                    break;
+                case 2 : 
+                    modification_age();
+                    break;
+                case 3 : 
+                    modification_buts();
+                    break;
+                case 4: goto menu; 
+                       break;
+                default: printf("entrer un nombre entre 1 et 4 : ");
+                       goto menu3; 
+                      break;
+            }
+             
+           break;
+        case 4 :
+            supression();
+           break;
+        case 5 :
+           menu4 : {
+               printf("1 => recherche par id : \n");
+               printf("2 => recherche par nom : \n");
+               printf("3 => reteur au menu principale : \n");
+           }
+           scanf("%d",&choix_recherche);
+           
+           case 1 : 
+               recherche_id();
+               break;
+           case 2 : 
+               recherche_nom();
+               break;
+           case 3 : goto menu;
+               break;
+           default: printf("entrer un nombre entre 1 et 3 : ");
+                       goto menu4; 
+                      break;
+           
+        case 6 :
+           menu5 : {
+               printf("1 => Afficher le nombre total de joueurs dans l’équipe : \n");
+               printf("2 => Afficher l’âge moyen des joueurs : \n");
+               printf("3 => Afficher les joueurs ayant marqué plus de X buts (X introduit par l’utilisateur) : \n");
+               printf("4 => Afficher le meilleur buteur (joueur avec le maximum de buts) : \n");
+               printf("5 => Afficher le joueur le plus jeune et le plus âgé : \n");
+               printf("6 => reteur au menu principale : \n");
+           }
+           scanf("%d",choix_statistiques);
+           
+           switch (choix_statistiques) {
+               case 1 : afficher_nombre_totale();
+                  break;
+               case 2 : affiche_age_moyenne();
+                  break;
+               case 3 : affiche_joueur_marque_plusX();
+                  break;
+               case 4 : affiche_buteur();
+                  break;
+               case 5 : affiche_plusjeune_plusage();
+                  break;
+               case 6 : goto menu;
+               break;
+            default: printf("entrer un nombre entre 1 et 6 : ");
+                       goto menu5; 
+                      break;  
+           }
+           
+           break;
+        default : printf("saisir une nombre entre (1/6) : \n");
+                 goto menu;  
+           break ;
+    }
+
+    
+    return 0;
+}
