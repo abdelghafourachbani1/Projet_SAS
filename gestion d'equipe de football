@@ -5,30 +5,106 @@ typedef struct {
     int id ;
     char nom[20] ;
     char prenom[20] ;
-    int numero_joueur;
-    char poste[10];
+    int numero_maillot;
+    char post[10];
     int age;
     int buts;
 } joueur;
+
+int nombre_joueur = 10;
+int counter_id = 110;
+
+   joueur j[30] = {
+    {100,"lionel","messi",10,"attaquant",38,91},
+    {101,"zakaria","hedraf",11,"attaquant",40,35},
+    {102,"yassine","bono",1,"gardien",28,0},
+    {103,"youssef","moti3",1,"gardien",25,0},
+    {104,"xavi","simonz",8,"milieu",27,15},
+    {105,"toni","kros",6,"milieu",32,9},
+    {106,"sergio","ramos",4,"defenseur",35,2},
+    {107,"lamine","yamal",19,"attaquant",18,25},
+    {108,"luis","diaz",7,"attaquant",23,30},
+    {109,"mohamed","salah",12,"attaquant",30,40}
+};   
+
+
+void ajoute_joueur () {
+    int p;
+       if (30 > nombre_joueur) {
+            printf("entre le nom du joueur : \n");
+            scanf("%s",j[nombre_joueur].nom);
+            printf("entre le prenom du joueur : \n");
+            scanf("%s",j[nombre_joueur].prenom);
+            printf("entre le numero du maillot du joueur : \n");
+            scanf("%d",&j[nombre_joueur].numero_maillot);
+          
+            menu_poste : {
+                printf("entre le poste du joueur : \n");
+                printf("1 => guardien ; 2 => defenseur ; 3 => milieu ; 4 => attaquant \n");
+            }
+                scanf("%d",&p);
+                switch (p) {
+                case 1:
+                    strcpy(j[nombre_joueur].post,"guardien");
+                    break;
+                case 2:
+                    strcpy(j[nombre_joueur].post,"defenseur");
+                    break;
+                case 3:
+                    strcpy(j[nombre_joueur].post,"milieu");
+                    break;
+                case 4:
+                    strcpy(j[nombre_joueur].post,"attaquant");
+                    break;
+                default :
+                    printf("error! entrer un nombre entre 1 et 4 ");
+                    goto menu_poste;
+                    break;
+                }
+        
+           j[nombre_joueur].id = counter_id++;
+           printf("entrer l'age du joueur : \n");
+           scanf("%d",&j[nombre_joueur].age);
+           printf("entrer le nombre des buts du joueur : \n");
+           scanf("%d",&j[nombre_joueur].buts);
+           nombre_joueur++;
+        } else {
+           printf("la liste des joueurs est complete : ");
+        }
+} 
+void ajoute_plusieur_joueur() {
+    int x;
+    printf("entrer le nombre du joueur que tu veux ajouter : \n");
+    scanf("%d", &x);
+        for (i = 0;i < x;i++) {
+            ajoute_joueur();
+        }
+}
+void afficher_joueurs() {
+    for (int i = 0; i < nombre_joueur; i++) {
+        printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
+    }
+}
+void tri_alphabetique() {
+    joueur variable_temporaire;
+    for (int i = 0; i < nombre_joueur-1;i++) {
+        for (int j = 0; jx < nombre_joueur-1-i;j++) {
+            if (strcmp(j[i].nom, j[jx].nom) > 0) {
+                temp = j[i];
+                j[i] = j[j+1];
+                j[j+1] = temp;
+            }
+        }
+    }
+    printf("tri par ordre alphabetique \n");
+    afficher_joueurs();
+}
 
 int main() {
 
     int  id_joueur = 110;
     int choix_principale ,choix_ajoute ,choix_affiche ,choix_modification ,choix_statistiques;
     
-    joueur j[50];
-    
-    j[0] = {100,"lionel","messi",10,"attaquant",38,91};
-    j[1] = {101,"zakaria","hedraf",11,"attaquant",40,35};
-    j[2] = {102,"yassine","bono",1,"gardien",28,0};
-    j[3] = {103,"youssef","moti3",1,"gardien",25,0};
-    j[4] = {104,"xavi","simonz",8,"milieu",27,15};
-    j[5] = {105,"toni","kros",6,"milieu",32,9};
-    j[6] = {106,"sergio","ramos",4,"défenseur",35,2};
-    j[7] = {107,"lamine","yamal",19,"attaquant",18,25};
-    j[8] = {108,"luis","diaz",7,"attaquant",23,30};
-    j[9] = {109,"mohamed","salah",12,"attaquant",30,40};
-         
     
     menu : {
     printf("=========menu==========\n");
@@ -76,7 +152,7 @@ int main() {
             }
             scanf("%d",&choix_affiche);
             
-            switch(printf(choix_affiche) {
+            switch(choix_affiche) {
                 case 1 : 
                     tri_alphabétique(); 
                     goto menu2;
@@ -91,7 +167,7 @@ int main() {
                    break;
                 case 4: goto menu; 
                        break;
-                default: printf("entrer un nombre entre 1 et 4 : ");
+                default: printf("entrer un nombre entre 1 et 4 : \n");
                        goto menu2; 
                       break;
             }
