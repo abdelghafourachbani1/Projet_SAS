@@ -54,11 +54,12 @@ int main() {
                switch(choix_ajoute){
                 
                    case 1: ajoute_joueur();
-                        
+                        goto menu1;
                         break;
                    case 2: ajoute_plusieur_joueur();
+                        goto menu1;
                         break;
-                   case 3: goto menu;  
+                   case 3: goto menu;
                        break;
                     default: printf("entrer un nombre entre 1 et 3 : ");
                        goto menu1; 
@@ -76,11 +77,17 @@ int main() {
             scanf("%d",&choix_affiche);
             
             switch(printf(choix_affiche) {
-                case 1 : tri_alphabétique(); 
+                case 1 : 
+                    tri_alphabétique(); 
+                    goto menu2;
                     break;
-                case 2 : tri_âge(); 
+                case 2 : 
+                    tri_âge();
+                    goto menu2;
                     break;
-                case 3 : tri_poste();
+                case 3 : 
+                   tri_poste();
+                   goto menu2;
                    break;
                 case 4: goto menu; 
                        break;
@@ -102,12 +109,15 @@ int main() {
             switch(choix_modification) {
                 case 1 : 
                     modification_poste(); 
+                    goto menu3;
                     break;
                 case 2 : 
                     modification_age();
+                    goto menu3;
                     break;
                 case 3 : 
                     modification_buts();
+                    goto menu3;
                     break;
                 case 4: goto menu; 
                        break;
@@ -130,9 +140,11 @@ int main() {
            
            case 1 : 
                recherche_id();
+               goto menu4;
                break;
            case 2 : 
                recherche_nom();
+               goto menu4;
                break;
            case 3 : goto menu;
                break;
@@ -152,15 +164,25 @@ int main() {
            scanf("%d",choix_statistiques);
            
            switch (choix_statistiques) {
-               case 1 : afficher_nombre_totale();
+               case 1 : 
+                  afficher_nombre_totale();
+                  goto menu5;
                   break;
-               case 2 : affiche_age_moyenne();
+               case 2 : 
+                  affiche_age_moyenne();
+                  goto menu5;
                   break;
-               case 3 : affiche_joueur_marque_plusX();
+               case 3 : 
+                  affiche_joueur_marque_plusX();
+                  goto menu5;
                   break;
-               case 4 : affiche_buteur();
+               case 4 : 
+                  affiche_buteur();
+                  goto menu5;
                   break;
-               case 5 : affiche_plusjeune_plusage();
+               case 5 : 
+                  affiche_plusjeune_plusage();
+                  goto menu5;
                   break;
                case 6 : goto menu;
                break;
