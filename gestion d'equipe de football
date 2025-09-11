@@ -6,7 +6,7 @@ typedef struct {
     char nom[20] ;
     char prenom[20] ;
     int numero_maillot;
-    char post[10];
+    char post[20];
     int age;
     int buts;
 } joueur;
@@ -83,25 +83,39 @@ void ajoute_plusieur_joueur() {
 
 void afficher_joueurs() {
     for (int i = 0; i < nombre_joueur; i++) {
-        printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
+        printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,j[i].age,j[i].id);
     }
 }
 
 void tri_alphabetique() {
+    int i ,k
     joueur variable_temporaire;
-    for (int i = 0; i < nombre_joueur-1;i++) {
-        for (int j = 0; j < nombre_joueur-1-i;j++) {
-            if (strcmp(j[j].nom, j[j+1].nom) > 0) {
-                variable_temporaire = j[j];
-                j[j] = j[j+1];
-                j[j+1] = variable_temporaire;
+    for (i = 0; i < nombre_joueur-1;i++) {
+        for (k = 0; k < nombre_joueur-1-i;k++) {
+            if (strcmp(j[k].nom, j[j+1].nom) > 0) {
+                variable_temporaire = j[k];
+                j[k] = j[k+1];
+                j[k+1] = variable_temporaire;
             }
         }
     }
     printf("tri par ordre alphabetique \n");
     afficher_joueurs();
 }
-void tri_age() 
+void tri_age() {
+    joueur variable_tomporaire;
+    for (int i = 0; i < nombre_joueur-1; i++) {
+        for (int k = 0; k < nombre_joueur-1-i; k++) {
+            if (j[k].age > j[k+1].age) {
+                variable_tomporaire = j[k];
+                j[k] = j[k+1];
+                j[k+1] = variable_tomporaire;
+            }
+        }
+    }
+    printf("la liste d'equipe trier par age :  ");
+    afficher_joueurs();
+}
 void tri_poste() {
     char poste_entrer[10];
     printf("entrer le post (gardien/defenseur/milieu/attaquant) : ");
@@ -185,7 +199,7 @@ void modification_buts() {
     printf("la joueur avec l'id %d n'exist pas dans la liste des joueurs ; \n",id);
 }
 
-void supretion(); {
+void supretion() {
     int id,i,k;
     printf("entrer l 'id du joueur pour modifier : ");
     scanf("%d", &id);
@@ -235,25 +249,28 @@ void recherche_nom() {
 
 void affiche_age_moyenne() {
     if (nombre_joueur == 0) {
-    int i ,somme = 0;
-    float moyenne;
-        printf("la liste est empty.\n");
+        printf("la liste d'equipe est empty\n");
         return;
     }
+
+    int somme = 0;
+    float moyenne;
+
     for (int i = 0; i < nombre_joueur; i++) {
         somme += j[i].age;
     }
-    moyenne = somme/nombre_joueur;
-    printf("l'age moyenne des joueurs est : %.2f ans \n",moyenne);
+
+    moyenne = somme/nombre_joueur;  
+    printf("le moyenne d'age est : %.2f ans\n", moyenne);
 }
 void affiche_joueur_marque_plusX() {
     int x;
     printf("entrer le nombre des buts  : ");
-    scanf("%d", &X);
+    scanf("%d", &x);
 
     int trv = 0;
     for (int i = 0; i < nombre_joueur; i++) {
-        if (j[i].buts > X) {
+        if (j[i].buts > ) {
             printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
             trv++;
         }
@@ -272,7 +289,7 @@ void affiche_buteur() {
     for (int i = 1; i < nombre_joueur; i++) {
         if (j[i].buts > max) {
             max = j[i].buts;
-            index = i;
+            indice_butteur = i;
         }
     }
     printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[indice_butteur].nom,j[indice_butteur].prenom,j[indice_butteur].numero_maillot,j[indice_butteur].post,&j[indice_butteur].age,&j[indice_butteur].id); 
@@ -300,10 +317,10 @@ void affiche_plusjeune_plusage() {
         }
     }
     printf("le joueur le plus age : \n");
-    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[index_min__age].nom,j[index_min__age].prenom,j[index_min__age].numero_maillot,j[index_min__age].post,&j[index_min__age].age,&j[index_min__age].id);
+    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[index_max__age].nom,j[index_max__age].prenom,j[index_max__age].numero_maillot,j[index_max__age].post,&j[index_max__age].age,&j[index_max__age].id);
     
     printf("le joueur le plus jeune : \n");
-    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[].nom,j[index_max__age].prenom,j[index_max__age].numero_maillot,j[index_max__age].post,&j[index_max__age].age,&j[index_max__age].id);
+    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[index_min__age].nom,j[index_min__age].prenom,j[index_min__age].numero_maillot,j[index_min__age].post,&j[index_min__age].age,&j[index_min__age].id);
 }
 
 int main() {
