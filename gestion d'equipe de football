@@ -80,24 +80,230 @@ void ajoute_plusieur_joueur() {
             ajoute_joueur();
         }
 }
+
 void afficher_joueurs() {
     for (int i = 0; i < nombre_joueur; i++) {
         printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
     }
 }
+
 void tri_alphabetique() {
     joueur variable_temporaire;
     for (int i = 0; i < nombre_joueur-1;i++) {
-        for (int j = 0; jx < nombre_joueur-1-i;j++) {
-            if (strcmp(j[i].nom, j[jx].nom) > 0) {
-                temp = j[i];
-                j[i] = j[j+1];
-                j[j+1] = temp;
+        for (int j = 0; j < nombre_joueur-1-i;j++) {
+            if (strcmp(j[j].nom, j[j+1].nom) > 0) {
+                variable_temporaire = j[j];
+                j[j] = j[j+1];
+                j[j+1] = variable_temporaire;
             }
         }
     }
     printf("tri par ordre alphabetique \n");
     afficher_joueurs();
+}
+void tri_age() 
+void tri_poste() {
+    char poste_entrer[10];
+    printf("entrer le post (gardien/defenseur/milieu/attaquant) : ");
+    scanf("%s", poste_entrer);
+
+    printf("joueurs a le poste %s \n",poste_entrer);
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (strcmp(j[i].post,poste_entrer) == 0) {
+             printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
+        }
+    }
+}
+
+void modification_poste() {
+     int id;
+    printf("entrer l'id du joueur pour modifier : \n");
+        scanf("%d",&id);
+
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (j[i].id == id) {
+            int choix;
+            menu_poste : {
+            printf("1 => gardien ; 2 => defenseur ; 3 => milieu ; 4 => attaquant \n");
+            printf("entrer le nouvelle poste : \n");
+        }
+                scanf("%d", &choix);
+            switch (choix) {
+                case 1: 
+                   strcpy(j[i].poste,"gardien"); 
+                   break;
+                case 2: 
+                    strcpy(j[i].poste,"defenseur"); 
+                    break;
+                case 3: 
+                    strcpy(j[i].poste,"milieu"); 
+                    break;
+                case 4: 
+                    strcpy(j[i].poste,"attaquant"); 
+                    break;
+                default: 
+                    printf("error! entrer un entier entre 1 et 4 : \n"); 
+                    goto menu_poste;
+                    break;
+            }
+            printf("le poste  a ete modifier en succe : \n");
+            return;
+        }
+    }
+    printf("la joueur avec l'id %d n'exist pas dans la liste des joueurs ; \n",id);
+}
+void modification_age() {
+   int id, nouvelle_age;
+    printf("entrer l'id de joueur pour modifier : \n");
+       scanf("%d",&id);
+
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (j[i].id == id) {
+            printf("entrer la nouvelle age : ");
+            scanf("%d",&nouvelle_age);
+            j[i].age = nouvelle_age;
+            printf("l'age du joueur a ete modifier en sucee : \n");
+            return;
+        }
+    }
+    printf("la joueur avec l'id %d n'exist pas dans la liste des joueurs ; \n",id);
+}
+void modification_buts() {
+     int id, nouvelle_buts;
+    printf("entrer l'id de joueur pour modifier : \n");
+       scanf("%d",&id);
+
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (j[i].id == id) {
+            printf("entrer la nouvelle nombre des buts : \n");
+            scanf("%d",&nouvelle_buts);
+            j[i].buts = nouvelle_buts;
+            printf("le nombre de but du joueur a ete modifier en sucee : \n");
+            return;
+        }
+    }
+    printf("la joueur avec l'id %d n'exist pas dans la liste des joueurs ; \n",id);
+}
+
+void supretion(); {
+    int id,i,k;
+    printf("entrer l 'id du joueur pour modifier : ");
+    scanf("%d", &id);
+
+    for (i = 0; i < nombre_joueur; i++) {
+        if (j[i].id == id) {
+             for (k = i; k < nombre_joueur-1; k++) {
+                j[k] = j[k+1];
+            }
+            nombre_joueur--; 
+            printf("le joueur avec l'id %d a ete suprime en succe  \n", id);
+            return; 
+        }
+    }
+
+}
+
+void recherche_id() {
+    int id;
+    printf("entrer l'id du joueur que tu veux cherche : \n");
+    scanf("%d", &id);
+
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (j[i].id == id) {
+            printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id); 
+            return;
+        }
+    }
+    printf("la joueur avec l'id %d n'exist pas dans la liste des joueurs ; \n",id);
+}
+void recherche_nom() {
+     char nom[20];
+    printf("entrer le nombre du joueur que tu veux cherche : \n");
+    scanf("%s",nom);
+
+    int trv = 0;
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (strcmp(j[i].nom,nom) == 0) {
+            printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
+            trv++;;
+        }
+    }
+    if (trv == 0) {
+       printf("la joueur avec le nom %s n'exist pas dans la liste des joueurs ; \n",nom);
+    }
+}
+
+void affiche_age_moyenne() {
+    if (nombre_joueur == 0) {
+    int i ,somme = 0;
+    float moyenne;
+        printf("la liste est empty.\n");
+        return;
+    }
+    for (int i = 0; i < nombre_joueur; i++) {
+        somme += j[i].age;
+    }
+    moyenne = somme/nombre_joueur;
+    printf("l'age moyenne des joueurs est : %.2f ans \n",moyenne);
+}
+void affiche_joueur_marque_plusX() {
+    int x;
+    printf("entrer le nombre des buts  : ");
+    scanf("%d", &X);
+
+    int trv = 0;
+    for (int i = 0; i < nombre_joueur; i++) {
+        if (j[i].buts > X) {
+            printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].post,&j[i].age,&j[i].id);
+            trv++;
+        }
+    }
+    if (trv == 0) {
+        printf("aucune joueur marque plus de %d des buts : ",x);
+    }
+}
+void affiche_buteur() {
+       if (nombre_joueur == 0) {
+        printf("la liste d'equipe est empty \n");
+        return;
+    }
+    int max = j[0].buts;
+    int indice_butteur = 0;
+    for (int i = 1; i < nombre_joueur; i++) {
+        if (j[i].buts > max) {
+            max = j[i].buts;
+            index = i;
+        }
+    }
+    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[indice_butteur].nom,j[indice_butteur].prenom,j[indice_butteur].numero_maillot,j[indice_butteur].post,&j[indice_butteur].age,&j[indice_butteur].id); 
+}
+void affiche_plusjeune_plusage() {
+     if (nombre_joueur == 0) {
+        printf("la liste d'equipe est empty \n");
+        return;
+    }
+    int min_age = j[0].age;
+    int index_min_age = 0;
+
+    for (int i = 1; i < nombre_joueur; i++) {
+        if (j[i].age < min_age) {
+            min_age = j[i].age;
+            index_min__age = i;
+        }
+    }
+    int max_age = j[0].age;
+    int index_max_age = 0;
+    for (int i = 1; i < nombre_joueur; i++) {
+        if (j[i].age > max_age) {
+            max_age = j[i].age;
+            index_max_age = i;
+        }
+    }
+    printf("le joueur le plus age : \n");
+    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[index_min__age].nom,j[index_min__age].prenom,j[index_min__age].numero_maillot,j[index_min__age].post,&j[index_min__age].age,&j[index_min__age].id);
+    
+    printf("le joueur le plus jeune : \n");
+    printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d \n",j[].nom,j[index_max__age].prenom,j[index_max__age].numero_maillot,j[index_max__age].post,&j[index_max__age].age,&j[index_max__age].id);
 }
 
 int main() {
@@ -154,11 +360,11 @@ int main() {
             
             switch(choix_affiche) {
                 case 1 : 
-                    tri_alphabétique(); 
+                    tri_alphabetique(); 
                     goto menu2;
                     break;
                 case 2 : 
-                    tri_âge();
+                    tri_age();
                     goto menu2;
                     break;
                 case 3 : 
@@ -204,7 +410,7 @@ int main() {
              
            break;
         case 4 :
-            supression();
+            supretion();
            break;
         case 5 :
            menu4 : {
@@ -241,7 +447,7 @@ int main() {
            
            switch (choix_statistiques) {
                case 1 : 
-                  afficher_nombre_totale();
+                  printf("le nombre total du joueurs dans la liste est : %d\n", nombre_joueur);
                   goto menu5;
                   break;
                case 2 : 
