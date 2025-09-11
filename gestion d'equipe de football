@@ -82,7 +82,8 @@ void ajoute_plusieur_joueur() {
 }
 
 void afficher_joueurs() {
-    for (int i = 0; i < nombre_joueur; i++) {
+	int i;
+    for (i = 0; i < nombre_joueur; i++) {
         printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].poste,j[i].age,j[i].id);
     }
 }
@@ -104,8 +105,9 @@ void tri_alphabetique() {
 }
 void tri_age() {
     joueur variable_tomporaire;
-    for (int i = 0; i < nombre_joueur-1; i++) {
-        for (int k = 0; k < nombre_joueur-1-i; k++) {
+    int i,k;
+    for (i = 0; i < nombre_joueur-1; i++) {
+        for (k = 0; k < nombre_joueur-1-i; k++) {
             if (j[k].age > j[k+1].age) {
                 variable_tomporaire = j[k];
                 j[k] = j[k+1];
@@ -122,7 +124,8 @@ void tri_poste() {
     scanf("%s", poste_entrer);
 
     printf("joueurs a le poste %s \n",poste_entrer);
-    for (int i = 0; i < nombre_joueur; i++) {
+    
+    for (i = 0; i < nombre_joueur; i++) {
         if (strcmp(j[i].poste,poste_entrer) == 0) {
              printf("nom : %s ; prenom : %s ;numero_maillot : %d ; post : %s ; age du joueur : %d ; id : %d ",j[i].nom,j[i].prenom,j[i].numero_maillot,j[i].poste,&j[i].age,&j[i].id);
         }
