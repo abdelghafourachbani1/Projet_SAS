@@ -84,16 +84,16 @@ void ajoute_joueur () {
 } 
 void ajoute_plusieur_joueur() {
     int x,i;
-    printf("entrer le nombre du joueur que tu veux ajouter : \n");
-    scanf("%d\n", &x);
+    printf("entrer le nombre du joueur que tu veux ajouter :");
+    scanf("%d",&x);
         for (i = 0;i < x;i++) {
             ajoute_joueur();
         }
 }
 
 void afficher_joueur(joueur j1) {
-    printf("Nom : %s ; Prenom : %s ; Numero maillot : %d ; Poste : %s ; Age : %d ; ID : %d\n",
-            j1.nom, j1.prenom, j1.numero_maillot, j1.poste, j1.age, j1.id);
+    printf("Nom : %s ; Prenom : %s ; Numero maillot : %d ; Poste : %s ; Age : %d ; ID : %d ; buts : %d\n",
+            j1.nom, j1.prenom, j1.numero_maillot, j1.poste, j1.age, j1.id,j1.buts);
 }
 void afficher_joueurs() {
 	int i;
@@ -224,7 +224,7 @@ void modification_buts() {
     printf("Le nombre de buts du joueur a ete modifie :\n");
 }
 
-void supretion() {
+void supretion(){
     int id,k;
     printf("entrer l'id du joueur pour supprimer :\n");
     scanf("%d", &id);
@@ -232,12 +232,11 @@ void supretion() {
     int i = trouver_joueur_par_id(id);
     if (i == -1) {
         printf("Le joueur avec lid %d n'existe pas\n", id);
-        return;
-    }
-
-    for (k = i; k < nombre_joueur - 1; k++) {
-        j[k] = j[k+1];
-    }
+    } else {
+        for (k = i; k < nombre_joueur - 1; k++) {
+           j[k] = j[k+1];
+        } 
+    } 
     nombre_joueur--;
     printf("Le joueur a ete supprime en succe\n");
 }
@@ -341,25 +340,28 @@ int main() {
     int choix_principale ,choix_ajoute ,choix_affiche ,choix_modification ,choix_statistiques ,choix_recherche;
     
     
-    menu : 
-    printf("=========MENU PRINCIPALEE==========\n");
-    printf("1 => Ajouter un joueur : \n");
-    printf("2 => Afficher la liste de tous les joueurs : \n");
-    printf("3 => Modifier un joueur : \n");
-    printf("4 => Supprimer un joueur : \n");
-    printf("5 => Rechercher un joueur : \n");
-    printf("6 => Statistiques : \n");
+    menu : {
+        printf("=========MENU PRINCIPALEE==========\n");
+        printf("1 => Ajouter un joueur : \n");
+        printf("2 => Afficher la liste de tous les joueurs : \n");
+        printf("3 => Modifier un joueur : \n");
+        printf("4 => Supprimer un joueur : \n");
+        printf("5 => Rechercher un joueur : \n");
+        printf("6 => Statistiques : \n");
+        printf("7 => Quitie : \n");
+    }
 
         scanf("%d",&choix_principale);
         
     switch (choix_principale) {
         case 1 :
             
-            menu1 : 
-            printf("========MENU D'AJOUTE========\n");
-            printf("1 => ajoute une joueur : \n");
-            printf("2 => ajoute plusieur joueur : \n");
-            printf("3 => reteur au menu principale : \n");
+            menu1 : {
+                printf("========MENU D'AJOUTE========\n");
+                printf("1 => ajoute une joueur : \n");
+                printf("2 => ajoute plusieur joueur : \n");
+                printf("3 => reteur au menu principale : ");
+            }
 
             scanf("%d",&choix_ajoute);
 
@@ -441,11 +443,11 @@ int main() {
             break;
         case 4 :
             supretion();
+            goto menu;
             break;
-
         case 5 :
             menu4 : 
-                printf("====MENU DE RECHERCHE====");
+                printf("====MENU DE RECHERCHE==== \n");
                 printf("1 => recherche par id : \n");
                 printf("2 => recherche par nom : \n");
                 printf("3 => reteur au menu principale : \n");
@@ -503,13 +505,17 @@ int main() {
                     goto menu5;
                     break;
                 case 6 : goto menu;
-                break;
-            default: printf("entrer un nombre entre 1 et 6 : ");
+                    break;
+                default: printf("entrer un nombre entre 1 et 6 : ");
                     goto menu5; 
             }
+        case 7:
+            printf("Au revoir!");
+        break;
 
         default : printf("saisir une nombre entre (1/6) : \n");
-                goto menu;  
+            goto menu;  
+        break;
     }
 
     
