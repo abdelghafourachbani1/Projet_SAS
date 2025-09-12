@@ -28,7 +28,8 @@ joueur j[30] = {
 };   
 
 int trouver_joueur_par_id(int id) {
-    for (int i = 0; i < nombre_joueur; i++) {
+	int i;
+    for (i = 0; i < nombre_joueur; i++) {
         if (j[i].id == id) {
             return i; 
         }
@@ -224,7 +225,7 @@ void modification_buts() {
 }
 
 void supretion() {
-    int id;
+    int id,k;
     printf("entrer l'id du joueur pour supprimer :\n");
     scanf("%d", &id);
 
@@ -234,7 +235,7 @@ void supretion() {
         return;
     }
 
-    for (int k = i; k < nombre_joueur - 1; k++) {
+    for (k = i; k < nombre_joueur - 1; k++) {
         j[k] = j[k+1];
     }
     nombre_joueur--;
