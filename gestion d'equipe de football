@@ -414,9 +414,9 @@ int main() {
         case 3 : 
             menu3 : 
                 printf("=====MENU DE MODIFICATION=====\n");
-                printf("Modifier le poste du'n joueur : \n");
-                printf("Modifier l'age d'un joueur: \n");
-                printf("Modifier le nombre de buts marqu par un joueur : \n");
+                printf("1 => Modifier le poste du'n joueur : \n");
+                printf("2 => Modifier l'age d'un joueur: \n");
+                printf("3 => Modifier le nombre de buts marqu par un joueur : \n");
                 printf("4 => reteur au menu principale : \n");
             
             scanf("%d",&choix_modification);
@@ -476,13 +476,13 @@ int main() {
                 printf("==================MENU DE STATISTIQUE===================\n");
                 printf("1 => Afficher le nombre total de joueurs dans l'equipe : \n");
                 printf("2 => Afficher l'age moyenne des joueurs : \n");
-                printf("3 => Afficher les joueurs ayant marqué plus de X buts (X introduit par l'utilisateur) : \n");
+                printf("3 => Afficher les joueurs ayant marque plus de X buts (X introduit par l'utilisateur) : \n");
                 printf("4 => Afficher le meilleur buteur (joueur avec le maximum de buts) : \n");
                 printf("5 => Afficher le joueur le plus jeune et le plus age : \n");
                 printf("6 => reteur au menu principale : \n");
             
             scanf("%d",&choix_statistiques);
-
+            
             switch (choix_statistiques) {
                 case 1 : 
                     printf("le nombre total du joueurs dans la liste est : %d\n", nombre_joueur);
