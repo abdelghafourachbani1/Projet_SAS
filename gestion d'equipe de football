@@ -50,8 +50,11 @@ void ajoute_joueur () {
                 scanf("%d",&j[nombre_joueur].numero_maillot);
 
             menu_poste : 
-                printf("entre le poste du joueur : \n");
-                printf("1 => guardien ; 2 => defenseur ; 3 => milieu ; 4 => attaquant \n");
+                    printf("choisi entre les quatre poste : \n");
+                    printf("1 => gardien \n");
+                    printf("2 => defenseur \n");
+                    printf("3 => milieu \n");
+                    printf("4 => attaquant \n");
             
                 scanf("%d",&p);
                 switch (p) {
@@ -92,8 +95,9 @@ void ajoute_plusieur_joueur() {
 }
 
 void afficher_joueur(joueur j1) {
-    printf("Nom : %s ; Prenom : %s ; Numero maillot : %d ; Poste : %s ; Age : %d ; ID : %d ; buts : %d\n",
+    printf("Nom : %s || Prenom : %s || Numero maillot : %d || Poste : %s || Age : %d || id : %d || buts : %d\n",
             j1.nom, j1.prenom, j1.numero_maillot, j1.poste, j1.age, j1.id,j1.buts);
+    printf("\n");
 }
 void afficher_joueurs() {
 	int i;
@@ -101,8 +105,6 @@ void afficher_joueurs() {
         afficher_joueur(j[i]);
     }
 }
-
-
 
 void tri_alphabetique() {
     int i ,k;
@@ -149,7 +151,6 @@ void tri_poste() {
     }
 }
 
-
 void modification_poste() {
     int id;
     printf("entrer l'id du joueur pour modifier le poste : \n");
@@ -163,9 +164,13 @@ void modification_poste() {
 
     int choix;
     menu_poste:
-    printf("1 => gardien ; 2 => defenseur ; 3 => milieu ; 4 => attaquant \n");
-    printf("choisie la nouvelle poste : \n");
-
+    printf("choisi entre les quatre poste : \n");
+    printf("1 => gardien \n");
+    printf("2 => defenseur \n");
+    printf("3 => milieu \n");
+    printf("4 => attaquant \n");
+    
+    printf("entrer votre choix : ");
     scanf("%d", &choix);
 
     switch (choix) {
@@ -254,7 +259,6 @@ void recherche_id() {
         printf("le joueur avec l'id %d n'existe pas\n", id);
     }
 }
-
 void recherche_nom() {
     int i;
     char entrer_nom[20];
@@ -342,13 +346,13 @@ int main() {
     
     menu : 
         printf("=========MENU PRINCIPALEE==========\n");
-        printf("1 => Ajouter un joueur : \n");
-        printf("2 => Afficher la liste de tous les joueurs : \n");
-        printf("3 => Modifier un joueur : \n");
-        printf("4 => Supprimer un joueur : \n");
-        printf("5 => Rechercher un joueur : \n");
-        printf("6 => Statistiques : \n");
-        printf("7 => Quitie : \n");
+        printf("1 => Ajouter un joueur.  \n");
+        printf("2 => Afficher la liste de tous les joueurs. \n");
+        printf("3 => Modifier un joueur. \n");
+        printf("4 => Supprimer un joueur. \n");
+        printf("5 => Rechercher un joueur. \n");
+        printf("6 => Statistiques. \n");
+        printf("7 => Quitie. \n");
     
     
         printf("entre votre choix : ");
@@ -359,9 +363,9 @@ int main() {
             
             menu1 : 
                 printf("========MENU D'AJOUTE========\n");
-                printf("1 => ajoute une joueur : \n");
-                printf("2 => ajoute plusieur joueur : \n");
-                printf("3 => reteur au menu principale : ");
+                printf("1 => ajoute une joueur. \n");
+                printf("2 => ajoute plusieur joueur. \n");
+                printf("3 => reteur au menu principale. ");
 
             printf("entre votre choix : ");
             scanf("%d",&choix_ajoute);
@@ -376,7 +380,7 @@ int main() {
                         break;
                 case 3: goto menu;
                         break;
-                default: printf("entrer un nombre entre 1 et 3 : ");
+                default: printf("entrer un nombre entre 1 et 3. ");
                     goto menu1; 
             }
             
@@ -384,10 +388,10 @@ int main() {
         case 2 : 
             menu2 : 
                 printf("================MENU D'AFFICHAGE==================\n");
-                printf("1 => Trier les joueurs par ordre alphabetique (Nom) : \n");
-                printf("2 => Trier les joueurs par age. : \n");
-                printf("3 => Afficher les joueurs par poste. : \n");
-                printf("4 => reteur au menu principale : \n");
+                printf("1 => Trier les joueurs par ordre alphabetique (Nom). \n");
+                printf("2 => Trier les joueurs par age.  \n");
+                printf("3 => Afficher les joueurs par poste.  \n");
+                printf("4 => reteur au menu principale. \n");
                 
             printf("entre votre choix : ");
             scanf("%d",&choix_affiche);
@@ -416,10 +420,10 @@ int main() {
         case 3 : 
             menu3 : 
                 printf("=====MENU DE MODIFICATION=====\n");
-                printf("1 => Modifier le poste du'n joueur : \n");
-                printf("2 => Modifier l'age d'un joueur: \n");
-                printf("3 => Modifier le nombre de buts marqu par un joueur : \n");
-                printf("4 => reteur au menu principale : \n");
+                printf("1 => Modifier le poste du'n joueur. \n");
+                printf("2 => Modifier l'age d'un joueur. \n");
+                printf("3 => Modifier le nombre de buts marqu par un joueur. \n");
+                printf("4 => reteur au menu principale. \n");
             
             printf("entre votre choix : ");
             scanf("%d",&choix_modification);
@@ -451,9 +455,9 @@ int main() {
         case 5 :
             menu4 : 
                 printf("====MENU DE RECHERCHE==== \n");
-                printf("1 => recherche par id : \n");
-                printf("2 => recherche par nom : \n");
-                printf("3 => reteur au menu principale : \n");
+                printf("1 => recherche par id. \n");
+                printf("2 => recherche par nom. \n");
+                printf("3 => reteur au menu principale. \n");
             
             printf("entre votre choix : ");
             scanf("%d",&choix_recherche);
@@ -478,12 +482,12 @@ int main() {
         case 6 :
             menu5 : 
                 printf("==================MENU DE STATISTIQUE===================\n");
-                printf("1 => Afficher le nombre total de joueurs dans l'equipe : \n");
-                printf("2 => Afficher l'age moyenne des joueurs : \n");
-                printf("3 => Afficher les joueurs ayant marque plus de X buts (X introduit par l'utilisateur) : \n");
-                printf("4 => Afficher le meilleur buteur (joueur avec le maximum de buts) : \n");
-                printf("5 => Afficher le joueur le plus jeune et le plus age : \n");
-                printf("6 => reteur au menu principale : \n");
+                printf("1 => Afficher le nombre total de joueurs dans l'equipe. \n");
+                printf("2 => Afficher l'age moyenne des joueurs. \n");
+                printf("3 => Afficher les joueurs ayant marque plus de X buts (X introduit par l'utilisateur). \n");
+                printf("4 => Afficher le meilleur buteur (joueur avec le maximum de buts). \n");
+                printf("5 => Afficher le joueur le plus jeune et le plus age. \n");
+                printf("6 => reteur au menu principale. \n");
             
             printf("entre votre choix : ");
             scanf("%d",&choix_statistiques);
