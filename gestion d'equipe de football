@@ -149,6 +149,7 @@ void tri_poste() {
     }
 }
 
+
 void modification_poste() {
     int id;
     printf("entrer l'id du joueur pour modifier le poste : \n");
@@ -188,7 +189,6 @@ void modification_poste() {
     printf("Le poste a ete modifié avec succès :\n");
     afficher_joueur(j[i]);
 }
-
 void modification_age() {
     int id, nouvelle_age;
     printf("entrer l'id du joueur pour modifier l'age :\n");
@@ -340,7 +340,7 @@ int main() {
     int choix_principale ,choix_ajoute ,choix_affiche ,choix_modification ,choix_statistiques ,choix_recherche;
     
     
-    menu : {
+    menu : 
         printf("=========MENU PRINCIPALEE==========\n");
         printf("1 => Ajouter un joueur : \n");
         printf("2 => Afficher la liste de tous les joueurs : \n");
@@ -349,20 +349,21 @@ int main() {
         printf("5 => Rechercher un joueur : \n");
         printf("6 => Statistiques : \n");
         printf("7 => Quitie : \n");
-    }
-
+    
+    
+        printf("entre votre choix : ");
         scanf("%d",&choix_principale);
         
     switch (choix_principale) {
         case 1 :
             
-            menu1 : {
+            menu1 : 
                 printf("========MENU D'AJOUTE========\n");
                 printf("1 => ajoute une joueur : \n");
                 printf("2 => ajoute plusieur joueur : \n");
                 printf("3 => reteur au menu principale : ");
-            }
 
+            printf("entre votre choix : ");
             scanf("%d",&choix_ajoute);
 
             switch(choix_ajoute){
@@ -387,7 +388,8 @@ int main() {
                 printf("2 => Trier les joueurs par age. : \n");
                 printf("3 => Afficher les joueurs par poste. : \n");
                 printf("4 => reteur au menu principale : \n");
-            
+                
+            printf("entre votre choix : ");
             scanf("%d",&choix_affiche);
             
             switch(choix_affiche) {
@@ -419,6 +421,7 @@ int main() {
                 printf("3 => Modifier le nombre de buts marqu par un joueur : \n");
                 printf("4 => reteur au menu principale : \n");
             
+            printf("entre votre choix : ");
             scanf("%d",&choix_modification);
             
             switch(choix_modification) {
@@ -452,6 +455,7 @@ int main() {
                 printf("2 => recherche par nom : \n");
                 printf("3 => reteur au menu principale : \n");
             
+            printf("entre votre choix : ");
             scanf("%d",&choix_recherche);
 
             switch (choix_recherche) {
@@ -481,6 +485,7 @@ int main() {
                 printf("5 => Afficher le joueur le plus jeune et le plus age : \n");
                 printf("6 => reteur au menu principale : \n");
             
+            printf("entre votre choix : ");
             scanf("%d",&choix_statistiques);
             
             switch (choix_statistiques) {
